@@ -1,41 +1,59 @@
-# 🏝️ GenExpan
+# 🏝️ UltraWiki: Ultra-fine-grained Entity Set Expansion with Negative Seed Entities
 
 
 
 ## 🔬 Dependencies
 
-```shell
+```bash
 pip install -r requirements.txt
 ```
 
 #### Details
 
-- python==3.11.7
-- pytorch==2.1.2
-- transformers==4.36.2
+- python==3.11
+- pytorch==2.2.1
+- transformers==4.38.2
+- openai==0.27.8
 
-## 📚 File hierarchy
+## 📚 Dataset(UntraWiki)
 
-- **File hierarchy**
+- download query from https://cloud.tsinghua.edu.cn/d/811f767164994c268679/ and put them into "./data"
+
+-  **File hierarchy**
 
 ```
-GenExpan
-├── beam_search.py
-├── CoT.py
-├── ds_config.json
-├── EntityTrie.py
-├── Expan.py
-├── main.py
-├── make_sentences.py
+UntraWiki
+├── data
+│   ├── query
+│   │   ├── cls_1.json
+│   │   ├── cls_2.json
+│   │   ├── ...
+│   │   └── cls_T.json
+│   │   
+│   ├── ent2sents.json
+│   ├── ent2text.json
+│   └── entities.txt
+│
+├── GenExpan
+│
+├── src
+│   ├── dataset_for_cl.py
+│   ├── dataset_for_ent_predict.py
+│   ├── expand.py
+│   ├── inferencer.py
+│   ├── main.py
+│   ├── make_cln2groups.py
+│   ├── make_ent2ids.py
+│   ├── model.py
+│   ├── train_mlm.py
+│   └── utils.py
+│
+├── appendix.pdf
 ├── README.md
 ├── requirements.txt
 ├── run_base.sh
-├── run_cot.sh
-├── run_ra.sh
-├── summarize.py
-├── train_lm.py
-├── train_lm.sh
-└── utils.py
+├── run_cl.sh
+└── run_ra.sh
 
 ```
 
@@ -45,55 +63,47 @@ GenExpan
 
 ---
 
-- The `train_lm.sh` script is used for training models. The training checkpoints will be saved in the `train_output` directory. Before expanding entities, you need to train the model using a corpus. Just run this:
+- `run_base.sh` `run_cl.sh` and `run_ra.sh` are respectively the running scripts for three methods: ***RetExpan***, ***RetExpan with Ultra-fine-grained Contrastive Learning***, and ***RetExpan with Entity-based Retrieval Augmentation***. Their corresponding relationships are shown in the following table:
 
-```shell
-bash train_lm.sh
+| Script Name |                        Method                         |
+| :---------- | :---------------------------------------------------: |
+| run_base.sh |                       RetExpan                        |
+| run_cl.sh   | RetExpan with Ultra-fine-grained Contrastive Learning |
+| run_ra.sh   |   RetExpan with Entity-based Retrieval Augmentation   |
+
+
+
+- We use 8 RTX 3090 GPUs with 24GB of VRAM each for training and inference. In the `run*.sh` script, we set the GPU usage through `gpu_groups="0,1,2,3,4,5,6,7"`.
+
+
+
+- If you want to expand entities with ***RetExpan***, run this:
+
 ```
-
-
-
-- `run_base.sh`, `run_cot.sh`, and `run_ra.sh` are respectively the running scripts for three methods: ***GenExpan***, ***GenExpan with Chain-of-thought Reasoning***, and ***GenExpan with Entity-based Retrieval Augmentation***. Their corresponding relationships are shown in the following table:
-
-| Script Name |                      Method                       |
-| :---------- | :-----------------------------------------------: |
-| run_base.sh |                     GenExpan                      |
-| run_cot.sh  |     GenExpan with Chain-of-thought Reasoning      |
-| run_ra.sh   | GenExpan with Entity-based Retrieval Augmentation |
-
-
-
-- We use 6 A100 GPUs with 80GB of VRAM each for training and inference. In fact, the inference phase of  ***GenExpan*** and ***GenExpan with Chain-of-thought Reasoning*** can also be performed on 24GB VRAM RTX 3090.
-
-
-
-- If you want to expand entities with ***GenExpan***, run this:
-
-```shell
 bash run_base.sh
 ```
 
-The expand results will be saved in `../data/expand_results_GenExpan_base` .
+The expand results will be saved in ***./data/expand_results_base*** .
 
 
 
-- If you want to expand entities with ***GenExpan with Chain-of-thought Reasoning***, run this:
+- If you want to expand entities with ***RetExpan with Ultra-fine-grained Contrastive Learning***, run this:
 
-```shell
-bash run_cot.sh
+```
+bash run_cl.sh
 ```
 
-The expand results will be saved in `../data/expand_results_GenExpan_cot` .
+The expand results will be saved in ***./data/expand_results_cl2*** .
 
 
 
-- If you want to expand entities with ***GenExpan with Entity-based Retrieval Augmentation***,  run this:
+- If you want to expand entities with ***RetExpan with Entity-based Retrieval Augmentation***,  run this:
 
-```shell
+```
 bash run_ra.sh
 ```
 
-The expand results will be saved in `./data/expand_results_GenExpan_ra` .
+The expand results will be saved in ***./data/expand_results_ra*** .
 
 
 
