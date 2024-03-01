@@ -93,7 +93,7 @@ The expand results will be saved in `../data/expand_results_GenExpan_cot` .
 bash run_ra.sh
 ```
 
-The expand results will be saved in `./data/expand_results_GenExpan_ra` .
+The expand results will be saved in `../data/expand_results_GenExpan_ra` .
 
 
 
