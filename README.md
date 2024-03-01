@@ -83,7 +83,7 @@ UntraWiki
 bash run_base.sh
 ```
 
-The expand results will be saved in ***./data/expand_results_base*** .
+The expand results will be saved in `./data/expand_results_base` .
 
 
 
@@ -93,7 +93,7 @@ The expand results will be saved in ***./data/expand_results_base*** .
 bash run_cl.sh
 ```
 
-The expand results will be saved in ***./data/expand_results_cl2*** .
+The expand results will be saved in `./data/expand_results_cl2` .
 
 
 
@@ -103,7 +103,7 @@ The expand results will be saved in ***./data/expand_results_cl2*** .
 bash run_ra.sh
 ```
 
-The expand results will be saved in ***./data/expand_results_ra*** .
+The expand results will be saved in `./data/expand_results_ra` .
 
 
 
