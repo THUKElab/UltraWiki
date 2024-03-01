@@ -40,7 +40,6 @@ class MetricsSummarizer:
         cln = self.cln_pattern.search(filename).group(1)
         return cln
 
-    # 返回的metric为3*8
     def parse_file(self, filepath) -> tuple[int, np.ndarray]:
         with open(filepath, encoding="utf-8") as f:
             lines = f.readlines()
@@ -51,7 +50,7 @@ class MetricsSummarizer:
         metric_begin_line = 5
 
         for i in range(metric_begin_line, metric_begin_line + n_keys):
-            j = i + n_keys  # AP对应的P所在的行
+            j = i + n_keys 
             value = self.parse_metric_line(
                 lines[i]) + self.parse_metric_line(lines[j])
             metrics.append(value)

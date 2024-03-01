@@ -25,7 +25,7 @@ def parse_args():
     parser.add_argument("--query", type=str, default="query")
     parser.add_argument("--expand_results", type=str, default="expand_results")
     parser.add_argument("--model_path", type=str, default=None)
-    # parser.add_argument("--model_path", type=str,default="./train_output/checkpoint-132")
+    # parser.add_argument("--model_path", type=str,default="./train_output")
     parser.add_argument("--num_ents_per_epoch", type=int, default=40)
     parser.add_argument("--topp_prob", type=float, default=0.7)
     parser.add_argument("--early_stopping_cnt", type=int, default=5)
