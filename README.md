@@ -63,7 +63,7 @@ UntraWiki
 
 ---
 
-- ***run_base.sh***, ***run_cl.sh***, and ***run_ra.sh*** are respectively the running scripts for three methods: ***RetExpan***, ***RetExpan with Ultra-fine-grained Contrastive Learning***, and ***RetExpan with Entity-based Retrieval Augmentation***. Their corresponding relationships are shown in the following table:
+- `run_base.sh` `run_cl.sh` and `run_ra.sh` are respectively the running scripts for three methods: ***RetExpan***, ***RetExpan with Ultra-fine-grained Contrastive Learning***, and ***RetExpan with Entity-based Retrieval Augmentation***. Their corresponding relationships are shown in the following table:
 
 | Script Name |                        Method                         |
 | :---------- | :---------------------------------------------------: |
@@ -103,7 +103,7 @@ The expand results will be saved in ***./data/expand_results_cl2*** .
 bash run_ra.sh
 ```
 
-The expand results will be saved in ***./data/expand_results_cl*** .
+The expand results will be saved in ***./data/expand_results_ra*** .
 
 
 
