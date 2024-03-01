@@ -241,8 +241,6 @@ if __name__ == "__main__":
         tokenizer=model.tokenizer, sample_rate=args.sample_rate,
         cln2groups=cln2groups,
     )
-    subset_size = len(ds1) // 10
-    ds1 = Subset(ds1, list(range(subset_size)))
 
     ds2 = None
     if args.CL:
@@ -252,8 +250,6 @@ if __name__ == "__main__":
             tokenizer=model.tokenizer,
             max_sent_pairs_per_ent_pair=args.max_sent_pairs_per_ent_pair,
         )
-        subset_size = len(ds2) // 10
-        ds2 = Subset(ds2, list(range(subset_size)))
         
 
     trainer = Trainer(args=args, model=model, dataset1=ds1, dataset2=ds2)
