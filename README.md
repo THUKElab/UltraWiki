@@ -73,7 +73,7 @@ UntraWiki
 
 
 
-- We use 8 RTX 3090 GPUs with 24GB of VRAM each for training and inference. In the `run*.sh` script, we set the GPU usage through `gpu_groups="0,1,2,3,4,5,6,7"`.
+- We use 8 RTX 3090 GPUs with 24GB of VRAM each for training and inference. In the `run*.sh` script, we set the GPU usage through `gpu_group="0,1,2,3,4,5,6,7"`.
 
 
 

@@ -45,7 +45,7 @@ GenExpan
 
 ---
 
-- The `train_lm.sh` script is used for training models. The training checkpoints will be saved in the `train_output` directory. Before expanding entities, you need to train the model using a corpus. Just run this:
+- The `train_lm.sh` script is used for training models. The training checkpoints will be saved in the `train_output` directory. Before expanding entities, you need to train the model using the corpus. Just run this:
 
 ```shell
 bash train_lm.sh
